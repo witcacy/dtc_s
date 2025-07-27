@@ -12,7 +12,7 @@ namespace DTCAnalyzerApp
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize(); // .NET 6+ feature
+            ApplicationConfiguration.Initialize(); 
             Application.Run(new Form1());
         }
     }
