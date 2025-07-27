@@ -32,6 +32,7 @@ namespace DTCAnalyzerApp
             button1 = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
+            button4 = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // button1
@@ -64,9 +65,20 @@ namespace DTCAnalyzerApp
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             //
+            // button4
+            //
+            button4.Location = new System.Drawing.Point(-2, 177);
+            button4.Name = "button4";
+            button4.Size = new System.Drawing.Size(272, 23);
+            button4.TabIndex = 3;
+            button4.Text = "Lectura UDS Peri\u00F3dica";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            //
             // Form1
             //
-            ClientSize = new System.Drawing.Size(282, 212);
+            ClientSize = new System.Drawing.Size(282, 267);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -79,5 +91,6 @@ namespace DTCAnalyzerApp
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
