@@ -31,6 +31,7 @@ namespace DTCAnalyzerApp
         {
             button1 = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
+            button3 = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // button1
@@ -52,10 +53,21 @@ namespace DTCAnalyzerApp
             button2.Text = "ODB + UDS";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
-            // 
+            //
+            // button3
+            //
+            button3.Location = new System.Drawing.Point(-2, 122);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(272, 23);
+            button3.TabIndex = 2;
+            button3.Text = "Reporte Completo";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            //
             // Form1
-            // 
-            ClientSize = new System.Drawing.Size(282, 166);
+            //
+            ClientSize = new System.Drawing.Size(282, 212);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "Form1";
@@ -66,5 +78,6 @@ namespace DTCAnalyzerApp
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
