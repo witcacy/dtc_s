@@ -1,0 +1,14 @@
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\DTCAnalyzerApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\DTCAnalyzerApp.AssemblyInfoInputs.cache
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\DTCAnalyzerApp.AssemblyInfo.cs
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\DTCAnalyzerApp.csproj.CoreCompileInputs.cache
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net6.0-windows\DTCAnalyzerApp.exe
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net6.0-windows\DTCAnalyzerApp.deps.json
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net6.0-windows\DTCAnalyzerApp.runtimeconfig.json
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net6.0-windows\DTCAnalyzerApp.dll
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net6.0-windows\DTCAnalyzerApp.pdb
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\DTCAnalyzerApp.dll
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\refint\DTCAnalyzerApp.dll
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\DTCAnalyzerApp.pdb
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\DTCAnalyzerApp.genruntimeconfig.cache
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net6.0-windows\ref\DTCAnalyzerApp.dll

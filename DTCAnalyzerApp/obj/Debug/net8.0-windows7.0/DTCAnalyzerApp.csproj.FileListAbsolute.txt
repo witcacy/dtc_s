@@ -1,0 +1,16 @@
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net8.0-windows7.0\DTCAnalyzerApp.exe
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net8.0-windows7.0\DTCAnalyzerApp.deps.json
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net8.0-windows7.0\DTCAnalyzerApp.runtimeconfig.json
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net8.0-windows7.0\DTCAnalyzerApp.dll
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\bin\Debug\net8.0-windows7.0\DTCAnalyzerApp.pdb
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.AssemblyInfoInputs.cache
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.AssemblyInfo.cs
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.csproj.CoreCompileInputs.cache
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.dll
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\refint\DTCAnalyzerApp.dll
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.pdb
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.genruntimeconfig.cache
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\ref\DTCAnalyzerApp.dll
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.Form1.resources
+C:\Users\Rfmartinez.BBBMEX\Downloads\DTCAnalyzerApp_WinForms (3)\DTCAnalyzerApp\obj\Debug\net8.0-windows7.0\DTCAnalyzerApp.csproj.GenerateResource.cache
