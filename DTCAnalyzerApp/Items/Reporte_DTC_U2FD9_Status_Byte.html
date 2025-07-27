@@ -1,0 +1,75 @@
+
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Reporte DTC U2FD9-7C</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 70%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .info { margin-bottom: 10px; }
+        .highlight { background-color: #e6f7ff; padding: 10px; border-left: 5px solid #2196F3; }
+    </style>
+</head>
+<body>
+    <h1>Reporte Detallado del DTC: U2FD9-7C</h1>
+    <div class='highlight'>
+        <p><strong>DTC Base:</strong> <a href="https://dot.report/dtc/U2FD9" target="_blank">U2FD9</a></p>
+        <p><strong>Status Byte:</strong> <code>7C</code> (Hex) = <code>01111100</code> (Binario)</p>
+        <p>Este status byte indica qué tipo de fallo está registrado, si es confirmado, pendiente, si la luz MIL está encendida, etc.</p>
+    </div>
+    <h2>Desglose del Status Byte</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Bit</th>
+      <th>Valor</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7</td>
+      <td>0</td>
+      <td>Bit 7 - Test failed</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1</td>
+      <td>Bit 6 - Test failed this monitoring cycle</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1</td>
+      <td>Bit 5 - Pending DTC</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td>Bit 4 - Confirmed DTC</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>Bit 3 - Test not completed this monitoring cycle</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>Bit 2 - Test failed since last clear</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>Bit 1 - Test not completed since last clear</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>Bit 0 - Warning Indicator Requested (MIL)</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
