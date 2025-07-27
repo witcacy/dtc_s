@@ -188,6 +188,66 @@ namespace DTCAnalyzerApp
             return output;
         }
 
+        public static string GenerarReporteCompleto(string trcPath)
+        {
+            string[] lines = File.ReadAllLines(trcPath);
+            Regex regex = new Regex(@"^\s*\d+\)\s+[\d\.]+\s+\d+\s+Rx\s+([0-9A-F]+)\s+-\s+\d+\s+((?:[0-9A-F]{2}\s+)+)");
+
+            var html = new List<string>();
+            html.Add("<html><head><meta charset='UTF-8'><title>Reporte Completo DTC</title>" +
+                      "<style>table{border-collapse:collapse;font-size:12px}th,td{border:1px solid #999;padding:4px}th{background:#eee}</style></head><body>");
+            html.Add("<h1>Reporte Completo de DTCs</h1>");
+            html.Add("<table><tr><th>CAN ID</th><th>DTC Hex</th><th>Código OBD-II</th><th>Subcódigo</th><th>Significado</th><th>Link</th></tr>");
+
+            HashSet<string> dtcSet = new HashSet<string>();
+
+            foreach (string line in lines)
+            {
+                Match m = regex.Match(line);
+                if (!m.Success) continue;
+
+                string id = m.Groups[1].Value;
+                string[] data = m.Groups[2].Value.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                for (int i = 0; i <= data.Length - 4; i++)
+                {
+                    string b1 = data[i];
+                    string b2 = data[i + 1];
+                    string b3 = data[i + 2];
+                    string b4 = data[i + 3];
+
+                    int valB1 = Convert.ToInt32(b1, 16);
+                    string prefixBits = Convert.ToString(valB1, 2).PadLeft(8, '0').Substring(0, 2);
+                    string prefix = prefixBits switch
+                    {
+                        "00" => "P",
+                        "01" => "C",
+                        "10" => "B",
+                        "11" => "U",
+                        _ => "U"
+                    };
+
+                    int valLow6 = valB1 & 0x3F;
+                    string mid = valLow6.ToString("X2");
+                    string code = $"{prefix}{mid}{b2}";
+                    string fullCode = $"{code}-{b4}";
+
+                    if (!dtcSet.Add(id + fullCode))
+                        continue;
+
+                    string meaning = subcodeDict.ContainsKey(b4.ToUpper()) ? subcodeDict[b4.ToUpper()] : "Desconocido";
+                    string link = $"<a href='https://dot.report/dtc/{code}' target='_blank'>{code}</a>";
+
+                    html.Add($"<tr><td>{id}</td><td>{b1} {b2} {b3} {b4}</td><td>{code}</td><td>{b4}</td><td>{meaning}</td><td>{link}</td></tr>");
+                }
+            }
+
+            html.Add("</table></body></html>");
+            string outFile = Path.Combine(Path.GetDirectoryName(trcPath), "Reporte_DTC_Completo.html");
+            File.WriteAllText(outFile, string.Join("\n", html));
+            return outFile;
+        }
+
     }
 
 }
