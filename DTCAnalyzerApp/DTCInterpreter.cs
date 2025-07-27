@@ -248,6 +248,42 @@ namespace DTCAnalyzerApp
             return outFile;
         }
 
+        public static string LecturaUDSPeriodica(string trcPath)
+        {
+            string[] lines = File.ReadAllLines(trcPath);
+            Regex regex = new Regex(@"^\s*\d+\)\s+([\d\.]+)\s+\d+\s+Rx\s+([0-9A-F]+)\s+-\s+\d+\s+((?:[0-9A-F]{2}\s+)+)");
+
+            var html = new List<string>();
+            html.Add("<html><head><meta charset='UTF-8'><title>Lectura UDS Peri\u00F3dica</title>" +
+                      "<style>table{border-collapse:collapse;font-size:12px}th,td{border:1px solid #999;padding:4px}th{background:#eee}</style></head><body>");
+            html.Add("<h1>Mensajes UDS 0x2A - Lectura Peri\u00F3dica</h1>");
+            html.Add("<table><tr><th>Tiempo (ms)</th><th>CAN ID</th><th>DID</th><th>Datos</th></tr>");
+
+            foreach (string line in lines)
+            {
+                Match m = regex.Match(line);
+                if (!m.Success) continue;
+
+                string time = m.Groups[1].Value;
+                string id = m.Groups[2].Value;
+                string[] data = m.Groups[3].Value.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                if (data.Length < 3) continue;
+                if (!data[0].Equals("2A", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                string did = data[1] + data[2];
+                string datos = string.Join(" ", data, 3, data.Length - 3);
+
+                html.Add($"<tr><td>{time}</td><td>{id}</td><td>{did}</td><td>{datos}</td></tr>");
+            }
+
+            html.Add("</table></body></html>");
+            string outFile = Path.Combine(Path.GetDirectoryName(trcPath), "Reporte_UDS_2A_Periodico.html");
+            File.WriteAllText(outFile, string.Join("\n", html));
+            return outFile;
+        }
+
     }
 
 }

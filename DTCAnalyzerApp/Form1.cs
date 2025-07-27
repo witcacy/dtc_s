@@ -58,5 +58,19 @@ namespace DTCAnalyzerApp
             }
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "TRC files (*.trc)|*.trc";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string inputPath = dialog.FileName;
+                string htmlPath = DTCInterpreter.LecturaUDSPeriodica(inputPath);
+                MessageBox.Show(@"Reporte generado:" + htmlPath, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Diagnostics.Process.Start("explorer", htmlPath);
+            }
+
+        }
     }
 }
