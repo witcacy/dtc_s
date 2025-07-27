@@ -251,13 +251,14 @@ namespace DTCAnalyzerApp
         public static string LecturaUDSPeriodica(string trcPath)
         {
             string[] lines = File.ReadAllLines(trcPath);
-            Regex regex = new Regex(@"^\s*\d+\)\s+([\d\.]+)\s+\d+\s+Rx\s+([0-9A-F]+)\s+-\s+\d+\s+((?:[0-9A-F]{2}\s+)+)");
+            // Regex para extraer tiempo, CAN ID y los 8 bytes de datos
+            Regex regex = new Regex(@"^\s*\d+\)\s+([\d\.]+)\s+\d+\s+Rx\s+([0-9A-F]+)\s+-\s+\d+\s+((?:[0-9A-F]{2}\s+)+)", RegexOptions.IgnoreCase);
 
             var html = new List<string>();
-            html.Add("<html><head><meta charset='UTF-8'><title>Lectura UDS Peri\u00F3dica</title>" +
+            html.Add("<html><head><meta charset='UTF-8'><title>Lectura UDS Periódica</title>" +
                       "<style>table{border-collapse:collapse;font-size:12px}th,td{border:1px solid #999;padding:4px}th{background:#eee}</style></head><body>");
-            html.Add("<h1>Mensajes UDS 0x2A - Lectura Peri\u00F3dica</h1>");
-            html.Add("<table><tr><th>Tiempo (ms)</th><th>CAN ID</th><th>DID</th><th>Datos</th></tr>");
+            html.Add("<h1>Mensajes UDS 0x2A - Lectura Periódica</h1>");
+            html.Add("<table><tr><th>Tiempo (ms)</th><th>CAN ID</th><th>DID</th><th>Código OBD-II</th><th>Estado</th><th>Subcódigo</th><th>Link</th><th>Explicación</th></tr>");
 
             foreach (string line in lines)
             {
@@ -268,14 +269,57 @@ namespace DTCAnalyzerApp
                 string id = m.Groups[2].Value;
                 string[] data = m.Groups[3].Value.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-                if (data.Length < 3) continue;
+                // Se esperan al menos 8 bytes: servicio, DID alto/bajo y datos del DTC
+                if (data.Length < 8) continue;
                 if (!data[0].Equals("2A", StringComparison.OrdinalIgnoreCase))
                     continue;
 
                 string did = data[1] + data[2];
-                string datos = string.Join(" ", data, 3, data.Length - 3);
 
-                html.Add($"<tr><td>{time}</td><td>{id}</td><td>{did}</td><td>{datos}</td></tr>");
+                // Bytes que contienen el DTC y su información
+                string b1 = data[3];       // primer byte del DTC
+                string b2 = data[4];       // segundo byte del DTC
+                string status = data[5];   // estado según UDS
+                string sub = data[6];      // subcódigo o tipo de falla
+
+                // Bytes adicionales (p.ej. extensión o severidad)
+                string extra = data[7];
+
+                // Ignorar registros donde el código es 0000
+                if (b1.Equals("00") && b2.Equals("00"))
+                    continue;
+
+                // Interpretación de acuerdo con ISO 15031-6 (bits 7-6 determinan la letra)
+                int val_b1 = Convert.ToInt32(b1, 16);
+                string bin_b1 = Convert.ToString(val_b1, 2).PadLeft(8, '0');
+                string prefixBits = bin_b1.Substring(0, 2);
+                int val_low6 = val_b1 & 0x3F;
+                string mid = val_low6.ToString("X2");
+                string prefix = prefixBits switch
+                {
+                    "00" => "P",
+                    "01" => "C",
+                    "10" => "B",
+                    "11" => "U",
+                    _ => "U"
+                };
+
+                string code = $"{prefix}{mid}{b2}";
+                string meaning = subcodeDict.ContainsKey(sub.ToUpper()) ? subcodeDict[sub.ToUpper()] : "Desconocido";
+                string link = $"<a href='https://dot.report/dtc/{code}' target='_blank'>{code}</a>";
+
+                string explicacion = $@"
+<div style='font-family:monospace;background:#f9f9f9;padding:8px;border-left:5px solid #0074D9;'>
+<b>Byte 1:</b> {b1} &rarr; binario <b>{bin_b1}</b><br/>
+├── <b>Bits 7-6</b>: {prefixBits} &rarr; {prefix}<br/>
+└── <b>Bits 5-0</b>: {Convert.ToString(val_low6, 2).PadLeft(6, '0')} ({mid})<br/>
+<b>Byte 2:</b> {b2}<br/>
+<b>Estado:</b> {status}<br/>
+<b>Subcódigo:</b> {sub} ({meaning})<br/>
+<b>Extra:</b> {extra}
+</div>";
+
+                html.Add($"<tr><td>{time}</td><td>{id}</td><td>{did}</td><td>{code}</td><td>{status}</td><td>{sub}</td><td>{link}</td><td>{explicacion}</td></tr>");
             }
 
             html.Add("</table></body></html>");
